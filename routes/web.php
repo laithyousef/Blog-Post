@@ -20,6 +20,7 @@ Route::post('auth/register' , 'App\Http\Controllers\AuthController@postRegister'
 
 Route::get('auth/login' , 'App\Http\Controllers\AuthController@getLogin')->middleware('guest');
 Route::post('auth/login' , 'App\Http\Controllers\AuthController@postLogin')->name('auth.login')->middleware('guest');
+
 // Google Login
 Route::get('login/google', [AuthController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('login/google/callback', [AuthController::class, 'handleGoogleCallback']);

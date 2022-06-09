@@ -31,12 +31,13 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
+        $tag = new Tag ;
+
         $this->authorize('create' , $tag);
         $this->validate($request , [
             'name' => 'required|max:255'
         ]);
 
-        $tag = new Tag ;
         $tag->name = $request->name;
         $tag->save();
         return redirect()->route('tags.index')->with('success' , 'Your tag has been created');

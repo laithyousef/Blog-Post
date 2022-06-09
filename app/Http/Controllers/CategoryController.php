@@ -9,6 +9,7 @@ class CategoryController extends Controller
 {
 
     public function  __construct() {
+        
         $this->middleware('auth');
     }
     /**
@@ -41,12 +42,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $category = new Category;
+
         $this->authorize('create' , $category);
         $this->validate($request , [
         'name' => 'required'
         ]);
 
-        $category = new Category;
 
         $category->name = $request->name;
         $category->save();
